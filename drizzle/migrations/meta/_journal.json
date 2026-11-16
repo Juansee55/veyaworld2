@@ -1,0 +1,97 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794616577558,
+      "tag": "0000_profiles",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794616643708,
+      "tag": "0001_gang_system_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794616789456,
+      "tag": "0002_gang_system_functions",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794616803448,
+      "tag": "0003_player_custom_art",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794616827538,
+      "tag": "0004_admin_powers",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1794616845920,
+      "tag": "0005_world_editor",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794619834654,
+      "tag": "0006_admin_csv_import",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1794624535999,
+      "tag": "0007_world_editor_uploaded_art",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1794662636322,
+      "tag": "0008_expanded_world_editor",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1794663382880,
+      "tag": "0009_player_status_and_news",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1794666812463,
+      "tag": "0010_gralats_and_firearms",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1794682352154,
+      "tag": "0011_player_health_and_profile_wallets",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1794683498435,
+      "tag": "0012_autumn_acorn_event",
+      "breakpoints": true
+    }
+  ]
+}

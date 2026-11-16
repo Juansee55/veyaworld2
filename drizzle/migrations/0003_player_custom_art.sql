@@ -1,0 +1,11 @@
+CREATE TABLE public.player_art (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), user_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE, kind text NOT NULL CHECK (kind IN ('body','head','hat','melee')), name text NOT NULL CHECK (char_length(name) BETWEEN 1 AND 40), sheet_path text NOT NULL, original_path text NOT NULL, frames integer NOT NULL DEFAULT 1 CHECK (frames BETWEEN 1 AND 200), frame_ms integer NOT NULL DEFAULT 100 CHECK (frame_ms BETWEEN 20 AND 2000), created_at timestamptz NOT NULL DEFAULT now(), CHECK (sheet_path LIKE user_id::text || '/%'), CHECK (original_path LIKE user_id::text || '/%'));
+GRANT SELECT, INSERT, DELETE ON public.player_art TO authenticated;
+GRANT ALL ON public.player_art TO service_role;
+ALTER TABLE public.player_art ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Players see shared character art" ON public.player_art FOR SELECT TO authenticated USING (true);
+CREATE POLICY "Players upload own art" ON public.player_art FOR INSERT TO authenticated WITH CHECK (user_id = auth.uid());
+CREATE POLICY "Players remove own art" ON public.player_art FOR DELETE TO authenticated USING (user_id = auth.uid());
+ALTER TABLE public.profiles ADD COLUMN melee_id text NOT NULL DEFAULT 'melee_none';
+CREATE POLICY "Players read appearance files" ON storage.objects FOR SELECT TO authenticated USING (bucket_id = 'player-art');
+CREATE POLICY "Players upload appearance files" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'player-art' AND (storage.foldername(name))[1] = auth.uid()::text);
+CREATE POLICY "Players delete own appearance files" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'player-art' AND (storage.foldername(name))[1] = auth.uid()::text);
